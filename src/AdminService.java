@@ -32,7 +32,7 @@ public class AdminService {
                 choice = Integer.parseInt(input);
                 break;
             } catch (NumberFormatException e) {
-                System.out.print("❌ Invalid input! Enter a number 1-8: ");
+                System.out.print(" Invalid input! Enter a number 1-8: ");
             }
         }
 
@@ -49,7 +49,7 @@ public class AdminService {
                 exportTransactions(userId);
             }
             case 8 -> System.out.println("Returning to Main Menu...");
-            default -> System.out.println("❌ Invalid choice!");
+            default -> System.out.println(" Invalid choice!");
         }
     } while (choice != 8); // exit when 8 is selected
 }
@@ -71,7 +71,7 @@ public class AdminService {
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error fetching users: " + e.getMessage());
+            System.out.println(" Error fetching users: " + e.getMessage());
         }
     }
 
@@ -93,7 +93,7 @@ public class AdminService {
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error fetching transactions: " + e.getMessage());
+            System.out.println(" Error fetching transactions: " + e.getMessage());
         }
     }
 
@@ -155,11 +155,11 @@ public class AdminService {
                 System.out.println("Returning...");
                 return;
             }
-            default -> System.out.println("❌ Invalid choice!");
+            default -> System.out.println(" Invalid choice!");
         }
 
     } catch (SQLException e) {
-        System.out.println("❌ Error: " + e.getMessage());
+        System.out.println(" Error: " + e.getMessage());
     }
 }
 
@@ -188,7 +188,7 @@ private void showTransactions(PreparedStatement stmt) throws SQLException {
             userId = Integer.parseInt(sc.nextLine());
             break;
         } catch (NumberFormatException e) {
-            System.out.print("❌ Invalid input! Enter a numeric User ID: ");
+            System.out.print(" Invalid input! Enter a numeric User ID: ");
         }
     }
 
@@ -198,11 +198,11 @@ private void showTransactions(PreparedStatement stmt) throws SQLException {
         try (PreparedStatement ps = conn.prepareStatement(updateQuery)) {
             ps.setInt(1, userId);
             int rows = ps.executeUpdate();
-            if (rows > 0) System.out.println("✅ User blocked successfully!");
-            else System.out.println("❌ User not found!");
+            if (rows > 0) System.out.println(" User blocked successfully!");
+            else System.out.println(" User not found!");
         }
     } catch (SQLException e) {
-        System.out.println("❌ Database error: " + e.getMessage());
+        System.out.println(" Database error: " + e.getMessage());
     }
 }
 
@@ -217,7 +217,7 @@ private void showTransactions(PreparedStatement stmt) throws SQLException {
                 userId = Integer.parseInt(sc.nextLine());
                 break;
             } catch (NumberFormatException e) {
-                System.out.print("❌ Invalid input! Enter a numeric user ID: ");
+                System.out.print(" Invalid input! Enter a numeric user ID: ");
             }
         }
 
@@ -227,7 +227,7 @@ private void showTransactions(PreparedStatement stmt) throws SQLException {
                 newBalance = Double.parseDouble(sc.nextLine());
                 break;
             } catch (NumberFormatException e) {
-                System.out.print("❌ Invalid input! Enter a valid balance: ");
+                System.out.print(" Invalid input! Enter a valid balance: ");
             }
         }
 
@@ -238,11 +238,11 @@ private void showTransactions(PreparedStatement stmt) throws SQLException {
             ps.setDouble(1, newBalance);
             ps.setInt(2, userId);
             int rows = ps.executeUpdate();
-            if (rows > 0) System.out.println("✅ User balance reset successfully!");
-            else System.out.println("❌ User not found!");
+            if (rows > 0) System.out.println(" User balance reset successfully!");
+            else System.out.println(" User not found!");
 
         } catch (SQLException e) {
-            System.out.println("❌ Error updating balance: " + e.getMessage());
+            System.out.println(" Error updating balance: " + e.getMessage());
         }
     }
 
@@ -252,9 +252,9 @@ private void showTransactions(PreparedStatement stmt) throws SQLException {
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(query)) {
             int rows = ps.executeUpdate();
-            System.out.println("✅ Interest credited to " + rows + " users' savings accounts.");
+            System.out.println(" Interest credited to " + rows + " users' savings accounts.");
         } catch (SQLException e) {
-            System.out.println("❌ Error crediting interest: " + e.getMessage());
+            System.out.println(" Error crediting interest: " + e.getMessage());
         }
     }
 
@@ -283,11 +283,11 @@ private void showTransactions(PreparedStatement stmt) throws SQLException {
                     );
                 }
             }
-            System.out.println("✅ Transactions exported to " + fileName);
+            System.out.println(" Transactions exported to " + fileName);
 
         }
     } catch (SQLException | IOException e) {
-        System.out.println("❌ Error exporting transactions: " + e.getMessage());
+        System.out.println(" Error exporting transactions: " + e.getMessage());
     }
 }
 

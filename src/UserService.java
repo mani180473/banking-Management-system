@@ -22,7 +22,7 @@ public class UserService {
             System.out.print("Enter your email: ");
             email = sc.nextLine().trim();
             if (email.isEmpty()) {
-                System.out.println("❌ Email cannot be empty!");
+                System.out.println(" Email cannot be empty!");
             } else {
                 break;
             }
@@ -31,7 +31,7 @@ public class UserService {
         double initialDeposit = readDouble("Initial deposit: ");
 
         if (initialDeposit < 0) {
-            System.out.println("❌ Initial deposit must be non-negative!");
+            System.out.println(" Initial deposit must be non-negative!");
             return -1;
         }
 
@@ -50,7 +50,7 @@ public class UserService {
                 break;
             }
             if (role.equals("USER") || role.equals("ADMIN")) break;
-            else System.out.println("❌ Invalid role! Only USER or ADMIN allowed.");
+            else System.out.println(" Invalid role! Only USER or ADMIN allowed.");
         }
 
         try (Connection conn = DBConnection.getConnection()) {
@@ -60,7 +60,7 @@ public class UserService {
             psCheck.setString(1, email);
             ResultSet rsCheck = psCheck.executeQuery();
             if (rsCheck.next()) {
-                System.out.println("❌ Email already registered!");
+                System.out.println(" Email already registered!");
                 return -1;
             }
 
@@ -80,11 +80,11 @@ public class UserService {
                 userId = rs.getInt(1);
             }
 
-            System.out.println("✅ Registration successful! Your user ID: " + userId + " | Role: " + role);
+            System.out.println(" Registration successful! Your user ID: " + userId + " | Role: " + role);
             return userId;
 
         } catch (SQLException e) {
-            System.out.println("❌ Registration failed: " + e.getMessage());
+            System.out.println(" Registration failed: " + e.getMessage());
             return -1;
         }
     }
@@ -116,7 +116,7 @@ public User login() {
 
                     // Check if account is locked
                     if (locked) {
-                        System.out.println("❌ Your account is locked due to multiple failed login attempts. Contact admin.");
+                        System.out.println(" Your account is locked due to multiple failed login attempts. Contact admin.");
                         return null;
                     }
 
@@ -125,24 +125,24 @@ public User login() {
                         // Successful login → reset failed attempts
                         resetFailedAttempts(userId, conn);
 
-                        System.out.println("✅ Welcome " + name + "! Your balance: " + balance + " | Role: " + role);
+                        System.out.println(" Welcome " + name + "! Your balance: " + balance + " | Role: " + role);
                         return new User(userId, name, email, role);
                     } else {
                         // Wrong password → increment failed attempts
                         incrementFailedAttempts(email, conn);
-                        System.out.println("❌ Invalid email or password!");
+                        System.out.println(" Invalid email or password!");
                         return null;
                     }
                 } else {
                     // Email not found
-                    System.out.println("❌ Invalid email or password!");
+                    System.out.println(" Invalid email or password!");
                     return null;
                 }
             }
         }
 
     } catch (SQLException e) {
-        System.out.println("❌ Login failed: " + e.getMessage());
+        System.out.println(" Login failed: " + e.getMessage());
         return null;
     }
 }
@@ -161,7 +161,7 @@ private void incrementFailedAttempts(String email, Connection conn) throws SQLEx
         ps.setString(1, email);
         int rows = ps.executeUpdate();
         if (rows > 0) {
-            System.out.println("❌ Your account has been locked due to 3 unsuccessful login attempts. Contact admin to unlock.");
+            System.out.println(" Your account has been locked due to 3 unsuccessful login attempts. Contact admin to unlock.");
         }
     }
 }
@@ -192,11 +192,11 @@ private void resetFailedAttempts(int userId, Connection conn) throws SQLExceptio
                 if (rs.next()) {
                     String storedHash = rs.getString("password");
                     if (!storedHash.equals(hashedCurrent)) {
-                        System.out.println("❌ Current password incorrect!");
+                        System.out.println(" Current password incorrect!");
                         return;
                     }
                 } else {
-                    System.out.println("❌ User not found!");
+                    System.out.println(" User not found!");
                     return;
                 }
             }
@@ -209,12 +209,12 @@ private void resetFailedAttempts(int userId, Connection conn) throws SQLExceptio
             String confirmPass = sc.nextLine().trim();
 
             if (!newPass.equals(confirmPass)) {
-                System.out.println("❌ Passwords do not match!");
+                System.out.println(" Passwords do not match!");
                 return;
             }
 
             if (newPass.length() < 6) {
-                System.out.println("❌ Password must be at least 6 characters long!");
+                System.out.println(" Password must be at least 6 characters long!");
                 return;
             }
 
@@ -228,10 +228,10 @@ private void resetFailedAttempts(int userId, Connection conn) throws SQLExceptio
             psUpdate.setInt(2, userId);
             psUpdate.executeUpdate();
 
-            System.out.println("✅ Password changed successfully!");
+            System.out.println(" Password changed successfully!");
 
         } catch (SQLException e) {
-            System.out.println("❌ Error changing password: " + e.getMessage());
+            System.out.println(" Error changing password: " + e.getMessage());
         }
     }
 
@@ -265,10 +265,10 @@ private void resetFailedAttempts(int userId, Connection conn) throws SQLExceptio
             psAdmin.setString(5, hashPassword("admin123"));
             psAdmin.executeUpdate();
 
-            System.out.println("✅ Initial admin created: email=admin@bank.com, password=admin123");
+            System.out.println(" Initial admin created: email=admin@bank.com, password=admin123");
 
         } catch (SQLException e) {
-            System.out.println("❌ Failed to create initial admin: " + e.getMessage());
+            System.out.println(" Failed to create initial admin: " + e.getMessage());
         }
     }
 
@@ -280,12 +280,12 @@ private void resetFailedAttempts(int userId, Connection conn) throws SQLExceptio
             try {
                 double value = Double.parseDouble(input);
                 if (value < 0) {
-                    System.out.println("❌ Value cannot be negative!");
+                    System.out.println(" Value cannot be negative!");
                     continue;
                 }
                 return value;
             } catch (NumberFormatException e) {
-                System.out.println("❌ Invalid input! Please enter a numeric value.");
+                System.out.println(" Invalid input! Please enter a numeric value.");
             }
         }
     }

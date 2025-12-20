@@ -6,6 +6,15 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("Testing DB Connection...");
+        Connection conn = DBConnection.getConnection();
+        if (conn != null) {
+            System.out.println(" Database connection successful!");
+        } else {
+            System.out.println(" Database connection failed!");
+            return;
+        }
+
         // Pass the same Scanner to all services
         UserService userService = new UserService(sc);
         userService.createInitialAdmin(); // ensure admin exists
@@ -15,13 +24,7 @@ public class Main {
         int choice;
         User loggedInUser = null; // store logged-in user
 
-        System.out.println("Testing DB Connection...");
-        Connection conn = DBConnection.getConnection();
-        if (conn != null) {
-            System.out.println("✅ Database connection successful!");
-        } else {
-            System.out.println("❌ Database connection failed!");
-        }
+       
 
         do {
             System.out.println("\n=== Banking Management System ===");
@@ -38,7 +41,7 @@ public class Main {
                     choice = Integer.parseInt(input);
                     break;
                 } catch (NumberFormatException e) {
-                    System.out.println("❌ Invalid input! Please enter a number between 1-4.");
+                    System.out.println(" Invalid input! Please enter a number between 1-4.");
                 }
             }
 
@@ -49,13 +52,13 @@ public class Main {
                     loggedInUser = userService.login(); // store logged-in user
                     if (loggedInUser != null) {
                         if ("ADMIN".equalsIgnoreCase(loggedInUser.getRole())) {
-                            System.out.println("🔑 Admin access granted!");
+                            System.out.println(" Admin access granted!");
                             adminService.showAdminMenu();
                         } else {
                             accountService.showMenu(loggedInUser.getId());
                         }
                     } else {
-                        System.out.println("❌ Login failed! Check your credentials.");
+                        System.out.println(" Login failed! Check your credentials.");
                     }
                 }
 
@@ -63,13 +66,13 @@ public class Main {
                     if (loggedInUser != null) {
                         userService.changePassword(loggedInUser.getId());
                     } else {
-                        System.out.println("❌ You must login first to change password!");
+                        System.out.println(" You must login first to change password!");
                     }
                 }
 
                 case 4 -> System.out.println("Exiting...");
 
-                default -> System.out.println("❌ Invalid choice, try again.");
+                default -> System.out.println(" Invalid choice, try again.");
             }
 
         } while (choice != 4);
@@ -85,7 +88,7 @@ public class Main {
             try {
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("❌ Invalid input! Please enter a numeric value.");
+                System.out.println(" Invalid input! Please enter a numeric value.");
             }
         }
     }

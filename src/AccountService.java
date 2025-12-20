@@ -33,7 +33,7 @@ public class AccountService {
                 case 4 -> transfer(userId);
                 case 5 -> viewTransactions(userId, sc);
                 case 6 -> System.out.println("Returning to Main Menu...");
-                default -> System.out.println("❌ Invalid choice!");
+                default -> System.out.println(" Invalid choice!");
             }
 
         } while (choice != 6);
@@ -49,11 +49,11 @@ public class AccountService {
             ps.setInt(2, userId);
             int rows = ps.executeUpdate();
             if (rows > 0) {
-                System.out.println("✅ Deposited " + amount);
+                System.out.println(" Deposited " + amount);
                 recordTransaction(userId, "DEPOSIT", amount, null);
             }
         } catch (SQLException e) {
-            System.out.println("❌ Error depositing: " + e.getMessage());
+            System.out.println(" Error depositing: " + e.getMessage());
         }
     }
 
@@ -70,7 +70,7 @@ public class AccountService {
             }
 
             if (amount > balance) {
-                System.out.println("❌ Insufficient balance!");
+                System.out.println(" Insufficient balance!");
                 return;
             }
 
@@ -80,11 +80,11 @@ public class AccountService {
                 ps.executeUpdate();
             }
 
-            System.out.println("✅ Withdrawn " + amount);
+            System.out.println(" Withdrawn " + amount);
             recordTransaction(userId, "WITHDRAWAL", amount, null);
 
         } catch (SQLException e) {
-            System.out.println("❌ Error withdrawing: " + e.getMessage());
+            System.out.println(" Error withdrawing: " + e.getMessage());
         }
     }
 
@@ -95,11 +95,12 @@ public class AccountService {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                System.out.println("💰 Current balance: " + rs.getDouble("balance"));
+                double balance = rs.getDouble("balance");
+                System.out.println("Current balance : ₹" + balance);
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error fetching balance: " + e.getMessage());
+            System.out.println(" Error fetching balance: " + e.getMessage());
         }
     }
 
@@ -117,7 +118,7 @@ public class AccountService {
                 ps.setString(1, recipientEmail);
                 ResultSet rs = ps.executeQuery();
                 if (!rs.next()) {
-                    System.out.println("❌ Recipient not found!");
+                    System.out.println(" Recipient not found!");
                     return;
                 }
                 recipientId = rs.getInt("id");
@@ -132,7 +133,7 @@ public class AccountService {
             }
 
             if (amount > senderBalance) {
-                System.out.println("❌ Insufficient balance!");
+                System.out.println(" Insufficient balance!");
                 return;
             }
 
@@ -150,11 +151,11 @@ public class AccountService {
                 ps.executeUpdate();
             }
 
-            System.out.println("✅ Transferred " + amount + " to " + recipientEmail);
+            System.out.println(" Transferred " + amount + " to " + recipientEmail);
             recordTransaction(userId, "TRANSFER", amount, recipientId);
 
         } catch (SQLException e) {
-            System.out.println("❌ Error transferring funds: " + e.getMessage());
+            System.out.println(" Error transferring funds: " + e.getMessage());
         }
     }
 
@@ -172,7 +173,7 @@ public class AccountService {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("❌ Transaction record failed: " + e.getMessage());
+            System.out.println(" Transaction record failed: " + e.getMessage());
         }
     }
 
@@ -209,7 +210,7 @@ public class AccountService {
             query += " AND amount BETWEEN ? AND ?";
         }
         default -> {
-            System.out.println("❌ Invalid choice!");
+            System.out.println(" Invalid choice!");
             return;
         }
     }
@@ -244,7 +245,7 @@ public class AccountService {
         }
 
     } catch (SQLException e) {
-        System.out.println("❌ Error fetching transactions: " + e.getMessage());
+        System.out.println(" Error fetching transactions: " + e.getMessage());
     }
 }
 
@@ -257,7 +258,7 @@ public class AccountService {
             try {
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("❌ Invalid input! Please enter a number.");
+                System.out.println(" Invalid input! Please enter a number.");
             }
         }
     }
@@ -270,12 +271,12 @@ public class AccountService {
             try {
                 double value = Double.parseDouble(input);
                 if (value < 0) {
-                    System.out.println("❌ Value cannot be negative!");
+                    System.out.println(" Value cannot be negative!");
                     continue;
                 }
                 return value;
             } catch (NumberFormatException e) {
-                System.out.println("❌ Invalid input! Please enter a numeric value.");
+                System.out.println("Invalid input! Please enter a numeric value.");
             }
         }
     }
