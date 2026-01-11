@@ -160,7 +160,12 @@ Java Full Stack Developer (Fresher)
 ⭐ If you like this project, feel free to star the repository.
 
 ## Example
-<img width="771" height="476" alt="Screenshot 2025-09-21 164233" src="https://github.com/user-attachments/assets/3fbae90c-38d6-40a7-8192-8f11afd6e073" />
+<img width="771" height="476" alt="Screenshot 2025-09-21 164233" src="images/Screenshot 2026-01-11 122703.png" />
 
-<img width="764" height="250" alt="image" src="https://github.com/user-attachments/assets/d9710af5-9bea-4adc-a8f3-e3c224de319a" />
+<img width="764" height="250" alt="image" src="[https://github.com/user-attachments/assets/d9710af5-9bea-4adc-a8f3-e3c224de319a](https://github.com/mani180473/banking-Management-system/blob/main/images/Screenshot%202026-01-11%20122720.png)" />
 
+<img width="771" height="476" alt="Screenshot 2025-09-21 164233" src="[images/Screenshot 2026-01-11 122703.png](https://github.com/mani180473/banking-Management-system/blob/main/images/Screenshot%202026-01-11%20122733.png)" />
+
+<img width="771" height="476" alt="Screenshot 2025-09-21 164233" src="https://github.com/mani180473/banking-Management-system/blob/main/images/Screenshot%202026-01-11%20122741.png" />
+<img width="771" height="476" alt="Screenshot 2025-09-21 164233" src="[images/Screenshot 2026-01-11 122703.png](https://github.com/mani180473/banking-Management-system/blob/main/images/Screenshot%202026-01-11%20122756.png)" />
+<img width="771" height="476" alt="Screenshot 2025-09-21 164233" src="[images/Screenshot 2026-01-11 122703.png](https://github.com/mani180473/banking-Management-system/blob/main/images/Screenshot%202026-01-11%20122805.png)" />
