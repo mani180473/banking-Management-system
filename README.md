@@ -66,6 +66,7 @@ banking-system/
 ├── .gitignore
 └── README.md
 
+
 🗄 Database Schema
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
