@@ -1,7 +1,12 @@
+// AdminService.java
+import util.DBConnection;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Scanner;
+
+import util.DBConnection;
 
 public class AdminService {
 
@@ -28,6 +33,7 @@ public class AdminService {
 
         while (true) {
             String input = sc.nextLine();
+
             try {
                 choice = Integer.parseInt(input);
                 break;

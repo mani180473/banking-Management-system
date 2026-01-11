@@ -1,3 +1,6 @@
+// User.java
+import util.DBConnection;
+
 public class User {
     private int id;
     private String name;

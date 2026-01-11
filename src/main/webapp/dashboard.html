@@ -1,0 +1,28 @@
+<-- src/main/Webapp/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <script src="js/app.js"></script>
+</head>
+<body>
+
+<h2>Dashboard</h2>
+
+<form action="deposit" method="post">
+  <input type="number" name="amount" required />
+  <button type="submit">Deposit</button>
+</form>
+
+<br>
+<form action="withdraw" method="post">
+  <input type="number" name="amount" required />
+  <button type="submit">Withdraw</button>
+</form>
+<br>
+
+<a href="balance">Check Balance</a>
+
+
+</body>
+</html>

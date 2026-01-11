@@ -1,5 +1,8 @@
+// Main.java
 import java.sql.Connection;
 import java.util.Scanner;
+
+import util.DBConnection;
 
 public class Main {
     public static void main(String[] args) {
