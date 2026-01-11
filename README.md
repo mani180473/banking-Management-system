@@ -37,7 +37,7 @@ Database: MySQL 8
 JDBC Driver: MySQL Connector/J
 
 📁 Project Structure
-banking-system/
+""" banking-system/
 │
 ├── src/
 │   └── main/
@@ -64,10 +64,11 @@ banking-system/
 │
 ├── pom.xml
 ├── .gitignore
-└── README.md
+└── README.md """"
 
 
 🗄 Database Schema
+"""
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
@@ -75,7 +76,7 @@ CREATE TABLE users (
     balance DOUBLE,
     role VARCHAR(12),
     password VARCHAR(256)
-);
+); """
 
 ⚙ Configuration
 
