@@ -1,74 +1,71 @@
-🏦 Banking Management System (Java Web Application)
+# 🏦 Banking Management System (Java Web Application)
 
-A simple Banking Management System built using Java Servlets, Maven, Apache Tomcat, and MySQL, implementing core banking operations such as user registration, login, deposit, withdrawal, and balance enquiry.
+A simple Banking Management System built using Java Servlets, Maven, Apache Tomcat, and MySQL.
+The application supports user registration, login, deposit, withdrawal, and balance enquiry.
 
-This project follows a clean Maven structure, proper database connectivity, session management, and secure password handling.
+This project is structured using Maven best practices and follows clean Git version control rules.
 
-🚀 Features
+---
 
-User Registration with secure password hashing (SHA-256)
+## 🚀 Features
 
-User Login with session management
+- User registration with password hashing (SHA-256)
+- Secure login with session management
+- Deposit money into account
+- Withdraw money with balance validation
+- View current account balance
+- Maven-based WAR deployment
+- MySQL database integration
 
-Deposit money into account
+---
 
-Withdraw money with balance validation
+## 🛠 Tech Stack
 
-View current account balance
+Build Tool  : Maven  
+Server      : Apache Tomcat 9  
+Database    : MySQL 8  
+JDBC Driver : MySQL Connector/J  
+Java        : Java 17  
 
-Clean Maven-based WAR deployment
+---
 
-MySQL database integration
-
-Proper Git hygiene with .gitignore
-
-🛠 Tech Stack
-
-Java: 17
-
-Web Technology: Servlets, HTML, CSS, JavaScript
-
-Build Tool: Maven
-
-Server: Apache Tomcat 9
-
-Database: MySQL 8
-
-JDBC Driver: MySQL Connector/J
-
-📁 Project Structure
-""" banking-system/
+## 📁 Project Structure
+```
+banking-system/
 │
 ├── src/
-│   └── main/
-│       ├── java/
-│       │   ├── util/
-│       │   │   ├── DBConnection.java
-│       │   │   └── PasswordUtils.java
-│       │   └── web/
-│       │       ├── LoginServlet.java
-│       │       ├── RegisterServlet.java
-│       │       ├── DepositServlet.java
-│       │       ├── WithdrawServlet.java
-│       │       └── BalanceServlet.java
-│       │
-│       ├── resources/
-│       │   └── config.properties
-│       │
-│       └── webapp/
-│           ├── login.html
-│           ├── register.html
-│           ├── dashboard.html
-│           └── WEB-INF/
-│               └── web.xml
+│ └── main/
+│ ├── java/
+│ │ ├── util/
+│ │ │ ├── DBConnection.java
+│ │ │ └── PasswordUtils.java
+│ │ └── web/
+│ │ ├── LoginServlet.java
+│ │ ├── RegisterServlet.java
+│ │ ├── DepositServlet.java
+│ │ ├── WithdrawServlet.java
+│ │ └── BalanceServlet.java
+│ │
+│ ├── resources/
+│ │ └── config.properties
+│ │
+│ └── webapp/
+│ ├── login.html
+│ ├── register.html
+│ ├── dashboard.html
+│ └── WEB-INF/
+│ └── web.xml
 │
 ├── pom.xml
 ├── .gitignore
-└── README.md """"
+└── README.md
+```
 
+---
 
-🗄 Database Schema
-"""
+## 🗄 Database Schema
+
+```sql
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
@@ -76,18 +73,21 @@ CREATE TABLE users (
     balance DOUBLE,
     role VARCHAR(12),
     password VARCHAR(256)
-); """
-
+);
+```
 ⚙ Configuration
 
-Create the file below:
+Create the file:
 
 src/main/resources/config.properties
 
+
+Add the following content:
+```
 db.url=jdbc:mysql://localhost:3306/banking_system?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
 db.username=root
 db.password=YOUR_PASSWORD
-
+```
 ▶ How to Run the Project
 1️⃣ Prerequisites
 
@@ -104,7 +104,7 @@ mvn clean package
 
 3️⃣ Deploy to Tomcat
 
-Copy the WAR file:
+Copy the generated WAR file:
 
 target/banking-system-1.0.war
 
@@ -113,69 +113,52 @@ to:
 
 apache-tomcat-9/webapps/
 
-
 Start Tomcat:
-
 startup.bat
 
 4️⃣ Access the Application
 http://localhost:8080/banking-system-1.0/login.html
 
-🌐 Application URLs
-URL	Description
-/login.html	User login
-/register.html	User registration
-/dashboard.html	User dashboard
-/login	Login servlet (POST)
-/register	Register servlet (POST)
-/deposit	Deposit servlet (POST)
-/withdraw	Withdraw servlet (POST)
-/balance	View balance (GET)
+
 🔐 Security Notes
 
 Passwords are stored using SHA-256 hashing
 
 Database credentials are externalized
 
-Sessions are used to prevent unauthorized access
+Sessions prevent unauthorized access
 
-Build artifacts and sensitive files are excluded using .gitignore
+Build artifacts are excluded using .gitignore
 
 📌 Key Learnings
 
-Maven-based Java web application structure
-
-Servlet lifecycle and request handling
+Java Servlet lifecycle
 
 JDBC database connectivity
 
-Session management
+Maven-based project structure
 
-Proper Git version control practices
+Session handling
 
-Debugging real-world encoding and deployment issues
+Git version control best practices
 
 📈 Future Enhancements
 
-Transaction history table
+Transaction history feature
 
 JSP-based UI rendering
 
-DAO & Service layer refactoring
+DAO and Service layer refactoring
 
-REST API conversion
-
-Input validation & exception handling improvements
+REST API implementation
 
 👤 Author
 
 Manikanta
-Java Full-Stack Developer (Fresher)
-Focused on clean architecture and interview-ready projects
+Java Full Stack Developer (Fresher)
 
-⭐ If you like this project
+⭐ If you like this project, feel free to star the repository.
 
-Feel free to ⭐ star the repository and explore further improvements!
 ## Example
 <img width="771" height="476" alt="Screenshot 2025-09-21 164233" src="https://github.com/user-attachments/assets/3fbae90c-38d6-40a7-8192-8f11afd6e073" />
 
